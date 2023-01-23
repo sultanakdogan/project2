@@ -38,11 +38,6 @@ curl https://checkip.amazonaws.com
 
 
 2. Security Gorup a ait kuralların oluşturulması:
-aws ec2 authorize-security-group-ingress \
-    --group-name roman_numbers_sec_grp \
-    --protocol tcp \
-    --port 22 \
-    --cidr 0.0.0.0/0
 
 aws ec2 authorize-security-group-ingress \
     --group-name roman_numbers_sec_grp \
@@ -76,7 +71,7 @@ aws ec2 run-instances \
     --image-id $LATEST_AMI \
     --count 1 \
     --instance-type t2.micro \
-    --key-name xxxxxxx \
+    --key-name esra \
     --security-groups roman_numbers_sec_grp \
     --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=roman_numbers}]' \
     --user-data file:///home/ec2-user/userdata.sh
